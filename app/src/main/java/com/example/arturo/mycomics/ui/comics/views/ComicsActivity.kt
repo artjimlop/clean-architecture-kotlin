@@ -7,13 +7,21 @@ import com.example.arturo.mycomics.infrastructure.activities.ActivityModule
 import com.example.arturo.mycomics.infrastructure.extensions.app
 import com.example.arturo.mycomics.ui.BaseActivity
 import com.example.arturo.mycomics.ui.comics.models.ComicModel
+import com.example.arturo.mycomics.ui.comics.views.adapters.ComicsAdapter
+import com.example.arturo.mycomics.ui.comics.views.listeners.OnComicClickedListener
+import kotlinx.android.synthetic.main.activity_comics.*
+import kotlinx.android.synthetic.main.comic_list.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 class ComicsActivity : BaseActivity(), ComicsView {
 
     val component by lazy { app.component.plus(ActivityModule(this)) }
 
+    private var adapter: ComicsAdapter? = null
+
     override fun showComics(models: MutableList<ComicModel>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        adapter?.items = models
+        adapter?.notifyDataSetChanged()
     }
 
     override fun showError(error: String) {
@@ -24,6 +32,17 @@ class ComicsActivity : BaseActivity(), ComicsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comics)
         component.inject(this)
+
+        setUpToolbar(appBar.toolbar, false)
+
+        adapter = ComicsAdapter(this)
+        adapter!!.setListener(object : OnComicClickedListener {
+            override fun onComicClicked(comicModel: ComicModel) {
+                //TODO navigator -> go to comic detail
+            }
+        })
+        comicsList.adapter = adapter
+
         presenter.initialize(this, 0)
     }
 }

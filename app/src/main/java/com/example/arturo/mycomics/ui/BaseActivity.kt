@@ -15,12 +15,12 @@ abstract class BaseActivity : AppCompatActivity() {
 
     internal var toolbar: Toolbar? = null
 
-    protected fun setUpToolbar(showUpButton: Boolean) {
-        if (toolbar != null) {
-            setSupportActionBar(toolbar)
-            if (supportActionBar != null) {
-                supportActionBar!!.setDisplayHomeAsUpEnabled(showUpButton)
-            }
+    fun setUpToolbar(toolbar: Toolbar?, showUpButton: Boolean) {
+        this.toolbar = toolbar
+        setSupportActionBar(toolbar)
+        if (supportActionBar != null) {
+            supportActionBar!!.setDisplayHomeAsUpEnabled(showUpButton)
+            supportActionBar!!.setDisplayShowTitleEnabled(true)
         }
     }
 }

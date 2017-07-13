@@ -1,5 +1,6 @@
 package com.example.arturo.mycomics.ui.comics.presenters
 
+import com.example.arturo.mycomics.ui.comics.models.ComicModel
 import com.example.arturo.mycomics.ui.comics.models.mapper.ComicModelMapper
 import com.example.arturo.mycomics.ui.comics.views.ComicsView
 import com.example.callback.ComicsCallback
@@ -24,9 +25,14 @@ class ComicsPresenter @Inject constructor(val getComicsUseCase: GetComicsUseCase
             }
 
             override fun onComicsLoaded(comicCollection: Collection<Comic>) {
+                showComics(comicModelMapper.toModel(comicCollection))
             }
 
         })
+    }
+
+    private fun showComics(comics: List<ComicModel>) {
+        view?.showComics(comics as MutableList<ComicModel>)
     }
 
     private fun showError(message: String?) {

@@ -15,8 +15,8 @@ class ComicModelMapper @Inject constructor() {
                 bo.imageUrls)
     }
 
-    fun toModel(bos: MutableList<Comic>?): List<ComicModel> {
-        return bos!!.map { comic -> toModel(comic) }
+    fun toModel(bos: Collection<Comic>): List<ComicModel> {
+        return bos.map { comic -> toModel(comic) }
     }
 
 
