@@ -1,4 +1,4 @@
-package com.example.data.dtos
+package com.example.data.datasources.dtos
 
 open class BaseResponse<out T>(val code: Int,
                                val status: String,

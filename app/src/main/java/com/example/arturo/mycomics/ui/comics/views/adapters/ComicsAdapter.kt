@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.arturo.mycomics.R
 import com.example.arturo.mycomics.ui.comics.models.ComicModel
-import com.example.arturo.mycomics.ui.comics.views.holders.ComicViewHolder
+import com.example.arturo.mycomics.ui.comics.views.viewholders.ComicViewHolder
 import com.example.arturo.mycomics.ui.comics.views.listeners.OnComicClickedListener
 
 class ComicsAdapter(private val context: Context) : RecyclerView.Adapter<ComicViewHolder>() {

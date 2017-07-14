@@ -1,4 +1,4 @@
-package com.example.data.dtos
+package com.example.data.datasources.dtos
 
 data class ListResponse<out T>(val offset: Int,
                                val limit: Int,

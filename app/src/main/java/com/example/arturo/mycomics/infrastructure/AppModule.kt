@@ -69,6 +69,13 @@ class AppModule(val app: MyComicsApplication) {
 
     @Provides
     @Singleton
+    @Named("character_id")
+    fun provideCharacterId(): Int {
+        return app.getString(R.string.character_id).toInt()
+    }
+
+    @Provides
+    @Singleton
     fun provideComicApiService(authInterceptor: AuthInterceptor): ComicApiService {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

@@ -1,4 +1,4 @@
-package com.example.data.dtos
+package com.example.data.datasources.dtos
 
 data class ComicResponse (val id: Int,
                           val title:String,

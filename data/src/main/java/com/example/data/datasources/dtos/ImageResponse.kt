@@ -1,3 +1,3 @@
-package com.example.data.dtos
+package com.example.data.datasources.dtos
 
-data class ImageResponse (val path: String, val extnsion: String)
+data class ImageResponse (val path: String, val extension: String)

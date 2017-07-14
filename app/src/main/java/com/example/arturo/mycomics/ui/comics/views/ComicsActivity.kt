@@ -10,6 +10,7 @@ import com.example.arturo.mycomics.ui.comics.models.ComicModel
 import com.example.arturo.mycomics.ui.comics.presenters.ComicsPresenter
 import com.example.arturo.mycomics.ui.comics.views.adapters.ComicsAdapter
 import com.example.arturo.mycomics.ui.comics.views.listeners.OnComicClickedListener
+import com.example.arturo.mycomics.ui.navigation.Navigator
 import kotlinx.android.synthetic.main.activity_comics.*
 import kotlinx.android.synthetic.main.comic_list.*
 import kotlinx.android.synthetic.main.toolbar.view.*
@@ -20,7 +21,13 @@ class ComicsActivity : BaseActivity(), ComicsView {
 
     val component by lazy { app.component.plus(ActivityModule(this)) }
 
-    //TODO @Inject @Named("character_id") var characterId: Int = 0
+    @JvmField
+    @field:[Inject Named("character_id")]
+    var characterId: Int = 0
+    @Inject
+    lateinit var navigator: Navigator
+    @Inject
+    lateinit var presenter: ComicsPresenter
 
     private var adapter: ComicsAdapter? = null
 
@@ -37,9 +44,12 @@ class ComicsActivity : BaseActivity(), ComicsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comics)
         component.inject(this)
-
         setUpToolbar(appBar.toolbar, false)
+        setupAdapter()
+        presenter.initialize(this, characterId)
+    }
 
+    private fun setupAdapter() {
         adapter = ComicsAdapter(this)
         adapter!!.setListener(object : OnComicClickedListener {
             override fun onComicClicked(comicModel: ComicModel) {
@@ -47,7 +57,5 @@ class ComicsActivity : BaseActivity(), ComicsView {
             }
         })
         comicsList.adapter = adapter
-
-        presenter.initialize(this, 1009220)
     }
 }

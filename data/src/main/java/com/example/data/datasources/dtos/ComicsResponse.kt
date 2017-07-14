@@ -1,4 +1,4 @@
-package com.example.data.dtos
+package com.example.data.datasources.dtos
 
 class ComicsResponse(code: Int,
                      status: String,
@@ -6,6 +6,6 @@ class ComicsResponse(code: Int,
                      attributionText: String,
                      attributionHTML: String,
                      etag: String,
-                     data: ListResponse<ComicsResponse>) :
-        BaseResponse<ListResponse<ComicsResponse>>(code,
+                     data: ListResponse<ComicResponse>) :
+        BaseResponse<ListResponse<ComicResponse>>(code,
                 status, copyright, attributionText, attributionHTML, etag, data)

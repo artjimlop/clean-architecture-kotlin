@@ -1,4 +1,4 @@
-package com.example.arturo.mycomics.ui.comics.views.holders
+package com.example.arturo.mycomics.ui.comics.views.viewholders
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
