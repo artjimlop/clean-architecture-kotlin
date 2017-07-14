@@ -50,6 +50,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.10'
     compile 'com.google.dagger:dagger:2.10'
     compile project(path: ':domain')
+    compile project(path: ':data')
 }
 repositories {
     mavenCentral()

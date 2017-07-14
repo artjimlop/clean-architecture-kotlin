@@ -1,6 +1,6 @@
 package com.example.callback
 
-import com.example.model.Comic
+import com.example.bos.Comic
 
 interface ComicsCallback {
     fun onComicsLoaded(comicCollection: Collection<Comic>)

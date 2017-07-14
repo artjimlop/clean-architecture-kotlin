@@ -1,4 +1,4 @@
-package com.example.model
+package com.example.bos
 
 data class Comic(val id: Int,
                       val title: String,

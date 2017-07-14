@@ -1,7 +1,7 @@
 package com.example.arturo.mycomics.ui.comics.models.mapper
 
 import com.example.arturo.mycomics.ui.comics.models.ComicModel
-import com.example.model.Comic
+import com.example.bos.Comic
 import javax.inject.Inject
 
 class ComicModelMapper @Inject constructor() {

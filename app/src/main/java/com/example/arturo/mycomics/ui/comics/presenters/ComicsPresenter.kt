@@ -4,7 +4,7 @@ import com.example.arturo.mycomics.ui.comics.models.ComicModel
 import com.example.arturo.mycomics.ui.comics.models.mapper.ComicModelMapper
 import com.example.arturo.mycomics.ui.comics.views.ComicsView
 import com.example.callback.ComicsCallback
-import com.example.model.Comic
+import com.example.bos.Comic
 import com.example.usecases.GetComicsUseCase
 import javax.inject.Inject
 
