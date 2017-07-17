@@ -104,6 +104,9 @@ class AppModule(val app: MyComicsApplication) {
     fun comicsDao(appDatabase: AppDatabase) = appDatabase.comicsDao()
 
     @Provides
+    fun imagesDao(appDatabase: AppDatabase) = appDatabase.imagesDao()
+
+    @Provides
     fun provideLocalComicsRepository(localComicsRepositoryImpl: LocalComicsRepositoryImpl): LocalComicsRepository
             = localComicsRepositoryImpl
 }
