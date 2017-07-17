@@ -1,18 +1,22 @@
 package com.example.arturo.mycomics.infrastructure
 
+import android.arch.persistence.room.Room
 import com.example.arturo.mycomics.MyComicsApplication
 import com.example.arturo.mycomics.R
 import com.example.arturo.mycomics.infrastructure.threading.UIThread
 import com.example.arturo.mycomics.ui.navigation.Navigator
 import com.example.data.datasources.MarvelComicDatasource
 import com.example.data.datasources.RetrofitMarvelComicDatasource
+import com.example.data.infrastructure.AppDatabase
 import com.example.data.net.ApiConstants
 import com.example.data.net.ComicApiService
 import com.example.data.net.interceptors.AuthInterceptor
+import com.example.data.repositories.LocalComicsRepositoryImpl
 import com.example.data.repositories.MarvelRepositoryImpl
 import com.example.executor.JobExecutor
 import com.example.executor.PostExecutionThread
 import com.example.executor.ThreadExecutor
+import com.example.repositories.LocalComicsRepository
 import com.example.repositories.MarvelRepository
 import dagger.Module
 import dagger.Provides
@@ -91,4 +95,15 @@ class AppModule(val app: MyComicsApplication) {
 
         return retrofit.create(ComicApiService::class.java)
     }
+
+    @Provides @Singleton
+    fun database(app: MyComicsApplication): AppDatabase
+            = Room.databaseBuilder(app, AppDatabase::class.java, "comics").build()
+
+    @Provides
+    fun comicsDao(appDatabase: AppDatabase) = appDatabase.comicsDao()
+
+    @Provides
+    fun provideLocalComicsRepository(localComicsRepositoryImpl: LocalComicsRepositoryImpl): LocalComicsRepository
+            = localComicsRepositoryImpl
 }

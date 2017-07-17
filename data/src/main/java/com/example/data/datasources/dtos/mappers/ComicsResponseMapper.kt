@@ -1,9 +1,9 @@
 package com.example.data.datasources.dtos.mappers
 
 import com.example.bos.Comic
-import com.example.data.datasources.dtos.ComicResponse
-import com.example.data.datasources.dtos.ComicsResponse
-import com.example.data.datasources.dtos.ImageResponse
+import com.example.data.datasources.dtos.responses.ComicResponse
+import com.example.data.datasources.dtos.responses.ComicsResponse
+import com.example.data.datasources.dtos.responses.ImageResponse
 import javax.inject.Inject
 
 class ComicsResponseMapper @Inject constructor() {

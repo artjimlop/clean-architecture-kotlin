@@ -4,12 +4,14 @@ import com.example.bos.Comic
 import com.example.callback.ComicsCallback
 import com.example.executor.PostExecutionThread
 import com.example.executor.ThreadExecutor
+import com.example.repositories.LocalComicsRepository
 import com.example.repositories.MarvelRepository
 import javax.inject.Inject
 
 class GetComicsUseCase @Inject constructor(val threadExecutor: ThreadExecutor,
                                            val postExecutionThread: PostExecutionThread,
-                                           val marvelRepository: MarvelRepository): UseCase {
+                                           val marvelRepository: MarvelRepository,
+                                           val localComicsRepository: LocalComicsRepository): UseCase {
 
     private var characterId: Int? = null
     private var callback: ComicsCallback? = null
@@ -21,7 +23,11 @@ class GetComicsUseCase @Inject constructor(val threadExecutor: ThreadExecutor,
     }
 
     override fun run() {
-        notifyLoaded(marvelRepository.getComics(characterId!!))
+        val localComics = localComicsRepository.getComics()
+        notifyLoaded(localComics)
+        val remoteComics = marvelRepository.getComics(characterId!!)
+        localComicsRepository.saveComics(remoteComics)
+        notifyLoaded(remoteComics)
     }
 
     private fun notifyLoaded(comicsCollection: Collection<Comic>) {

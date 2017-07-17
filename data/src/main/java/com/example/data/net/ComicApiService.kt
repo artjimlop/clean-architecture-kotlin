@@ -1,6 +1,6 @@
 package com.example.data.net
 
-import com.example.data.datasources.dtos.ComicsResponse
+import com.example.data.datasources.dtos.responses.ComicsResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

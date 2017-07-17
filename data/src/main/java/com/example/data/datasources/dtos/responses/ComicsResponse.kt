@@ -1,4 +1,4 @@
-package com.example.data.datasources.dtos
+package com.example.data.datasources.dtos.responses
 
 class ComicsResponse(code: Int,
                      status: String,
