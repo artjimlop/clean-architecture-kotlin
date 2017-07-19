@@ -5,8 +5,10 @@ import com.example.arturo.mycomics.MyComicsApplication
 import com.example.arturo.mycomics.R
 import com.example.arturo.mycomics.infrastructure.threading.UIThread
 import com.example.arturo.mycomics.ui.navigation.Navigator
+import com.example.data.datasources.LocalComicDatasource
 import com.example.data.datasources.MarvelComicDatasource
 import com.example.data.datasources.RetrofitMarvelComicDatasource
+import com.example.data.datasources.RoomComicDatasource
 import com.example.data.infrastructure.AppDatabase
 import com.example.data.net.ApiConstants
 import com.example.data.net.ComicApiService
@@ -53,8 +55,14 @@ class AppModule(val app: MyComicsApplication) {
 
     @Provides
     @Singleton
-    fun provideRetrofitComicDataStore(retrofitMarvelComicDatasource: RetrofitMarvelComicDatasource): MarvelComicDatasource {
+    fun provideRetrofitComicDataSource(retrofitMarvelComicDatasource: RetrofitMarvelComicDatasource): MarvelComicDatasource {
         return retrofitMarvelComicDatasource
+    }
+
+    @Provides
+    @Singleton
+    fun provideRoomComicDatasource(roomComicDatasource: RoomComicDatasource): LocalComicDatasource {
+        return roomComicDatasource
     }
 
     @Provides
