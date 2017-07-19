@@ -53,9 +53,13 @@ class ComicsActivity : BaseActivity(), ComicsView {
         adapter = ComicsAdapter(this)
         adapter!!.setListener(object : OnComicClickedListener {
             override fun onComicClicked(comicModel: ComicModel) {
-                //TODO navigator -> go to comic detail
+                goToComicDetail(comicModel)
             }
         })
         comicsList.adapter = adapter
+    }
+
+    private fun goToComicDetail(comicModel: ComicModel) {
+        navigator.goToComicDetail(this, comicModel)
     }
 }

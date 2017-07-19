@@ -16,6 +16,11 @@ class LocalComicsRepositoryImpl
                     val imageEntityMapper: ImageEntityMapper):
         LocalComicsRepository {
 
+    override fun getComic(comicId: Int?): Comic {
+        val comic = comicsDao.loadComicById(comicId!!)
+        return comicEntityMapper.toBusinessObject(comic, getImagesByComic(comic))
+    }
+
     override fun saveComics(comics: List<Comic>) {
         val comicEntities = comicEntityMapper.toDto(comics)
         comicsDao.insert(comicEntities)

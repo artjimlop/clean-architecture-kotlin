@@ -18,9 +18,7 @@ class ComicViewHolder(val comicView: View) : RecyclerView.ViewHolder(comicView) 
                 itemView.thumbnail)
 
         comicView.setOnClickListener {
-            if (onComicClickedListener != null) {
-                onComicClickedListener!!.onComicClicked(model)
-            }
+            onComicClickedListener!!.onComicClicked(model)
         }
     }
 }

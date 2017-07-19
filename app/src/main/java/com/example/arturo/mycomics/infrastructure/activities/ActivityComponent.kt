@@ -1,5 +1,6 @@
 package com.example.arturo.mycomics.infrastructure.activities
 
+import com.example.arturo.mycomics.ui.comics.views.ComicDetailActivity
 import com.example.arturo.mycomics.ui.comics.views.ComicsActivity
 import dagger.Subcomponent
 
@@ -7,4 +8,5 @@ import dagger.Subcomponent
 interface ActivityComponent {
     fun inject(comicsActivity: ComicsActivity)
 
+    fun inject(comicDetailActivity: ComicDetailActivity)
 }
