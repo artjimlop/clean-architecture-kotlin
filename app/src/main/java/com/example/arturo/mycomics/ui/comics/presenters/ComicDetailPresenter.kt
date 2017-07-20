@@ -23,16 +23,7 @@ class ComicDetailPresenter @Inject constructor(val getComicByIdUseCase: GetComic
             override fun onComicLoaded(comic: Comic) {
                 showComic(comicModelMapper.toModel(comic))
             }
-
-            override fun onError(exception: RuntimeException) {
-                showError(exception.message)
-            }
-
         })
-    }
-
-    private fun showError(message: String?) {
-        view?.showError(message!!)
     }
 
     private fun showComic(comic: ComicModel) {

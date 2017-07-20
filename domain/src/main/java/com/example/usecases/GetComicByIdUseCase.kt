@@ -5,7 +5,6 @@ import com.example.callback.ComicCallback
 import com.example.executor.PostExecutionThread
 import com.example.executor.ThreadExecutor
 import com.example.repositories.LocalComicsRepository
-import javax.inject.Inject
 
 class GetComicByIdUseCase @Inject constructor(val threadExecutor: ThreadExecutor,
                                            val postExecutionThread: PostExecutionThread,
@@ -26,9 +25,5 @@ class GetComicByIdUseCase @Inject constructor(val threadExecutor: ThreadExecutor
 
     private fun notifyLoaded(comic: Comic) {
         this.postExecutionThread.post(Runnable { callback?.onComicLoaded(comic) })
-    }
-
-    private fun notifyError(runtimeException: RuntimeException) {
-        this.postExecutionThread.post(Runnable { callback?.onError(runtimeException) })
     }
 }

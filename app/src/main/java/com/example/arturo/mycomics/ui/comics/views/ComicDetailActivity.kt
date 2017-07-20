@@ -3,6 +3,7 @@ package com.example.arturo.mycomics.ui.comics.views
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.text.Html
+import android.view.MenuItem
 import com.example.arturo.mycomics.R
 import com.example.arturo.mycomics.infrastructure.activities.ActivityModule
 import com.example.arturo.mycomics.infrastructure.extensions.app
@@ -30,12 +31,17 @@ class ComicDetailActivity : BaseActivity(), ComicDetailView {
         presenter.initialize(this, comicId)
     }
 
-    override fun showComic(comic: ComicModel) {
-        setupComicInfo(comic)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
-    override fun showError(error: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showComic(comic: ComicModel) {
+        setupComicInfo(comic)
     }
 
     private fun setupComicInfo(comicModel: ComicModel?) {

@@ -23,11 +23,15 @@ class GetComicsUseCase @Inject constructor(val threadExecutor: ThreadExecutor,
     }
 
     override fun run() {
-        val localComics = localComicsRepository.getComics()
-        notifyLoaded(localComics)
-        val remoteComics = marvelRepository.getComics(characterId!!)
-        localComicsRepository.saveComics(remoteComics)
-        notifyLoaded(remoteComics)
+        try {
+            val localComics = localComicsRepository.getComics()
+            notifyLoaded(localComics)
+            val remoteComics = marvelRepository.getComics(characterId!!)
+            localComicsRepository.saveComics(remoteComics)
+            notifyLoaded(remoteComics)
+        } catch(e: RuntimeException) {
+            notifyError(e)
+        }
     }
 
     private fun notifyLoaded(comicsCollection: Collection<Comic>) {
