@@ -5,10 +5,11 @@ import com.example.callback.ComicCallback
 import com.example.executor.PostExecutionThread
 import com.example.executor.ThreadExecutor
 import com.example.repositories.LocalComicsRepository
+import javax.inject.Inject
 
 class GetComicByIdUseCase @Inject constructor(val threadExecutor: ThreadExecutor,
-                                           val postExecutionThread: PostExecutionThread,
-                                           val localComicsRepository: LocalComicsRepository): UseCase {
+                                              val postExecutionThread: PostExecutionThread,
+                                              val localComicsRepository: LocalComicsRepository): UseCase {
 
     private var comicId: Int? = null
     private var callback: ComicCallback? = null

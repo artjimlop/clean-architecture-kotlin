@@ -2,6 +2,7 @@ package com.example.arturo.mycomics.ui.comics.views
 
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
+import android.support.v4.content.ContextCompat
 import android.text.Html
 import android.view.MenuItem
 import com.example.arturo.mycomics.R
@@ -59,9 +60,10 @@ class ComicDetailActivity : BaseActivity(), ComicDetailView {
     private fun setupAppBar(title: String) {
         val appBarLayout = toolbarLayout as CollapsingToolbarLayout
         appBarLayout.title = title
-        appBarLayout.setExpandedTitleColor(resources.getColor(android.R.color.transparent))
+        appBarLayout.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
     }
 
+    @SuppressWarnings("deprecation")
     private fun setupDescription(description: String) {
         if (description.isEmpty()) {
             comicDescription.text = getString(R.string.error_no_description)
