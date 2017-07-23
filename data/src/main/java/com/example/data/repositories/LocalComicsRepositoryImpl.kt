@@ -27,14 +27,4 @@ class LocalComicsRepositoryImpl
     private fun pairComic(comic: Comic): Pair<ComicEntity, List<ImageEntity>> {
         return Pair(comicEntityMapper.toDto(comic), imageEntityMapper.extractImages(comic))
     }
-
-    override fun getComics(): List<Comic> {
-        val comics = localComicDatasource.getComics()
-        return comics.map { comic -> mapComic(comic) }
-    }
-
-    private fun mapComic(comic: ComicEntity) = comicEntityMapper.toBusinessObject(comic, getImagesByComic(comic))
-
-    private fun getImagesByComic(comic: ComicEntity) = localComicDatasource.loadImagesByComic(comic.id)
-
 }

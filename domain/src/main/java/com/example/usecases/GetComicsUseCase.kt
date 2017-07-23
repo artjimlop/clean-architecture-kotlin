@@ -24,8 +24,6 @@ class GetComicsUseCase @Inject constructor(val threadExecutor: ThreadExecutor,
 
     override fun run() {
         try {
-            val localComics = localComicsRepository.getComics()
-            notifyLoaded(localComics)
             val remoteComics = marvelRepository.getComics(characterId!!)
             localComicsRepository.saveComics(remoteComics)
             notifyLoaded(remoteComics)

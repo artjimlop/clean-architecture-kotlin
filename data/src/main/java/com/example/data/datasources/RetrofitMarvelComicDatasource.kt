@@ -8,11 +8,6 @@ class RetrofitMarvelComicDatasource @Inject constructor(val comicApiService: Com
         MarvelComicDatasource {
 
     override fun getComics(characterId: Int): ComicsResponse {
-        /*
-        Call<VideoListResponseApiEntity> call = videoApiService.getPopularVideos();
-      Response<VideoListResponseApiEntity> response = call.execute();
-      return response.body().getItems();
-         */
         val comicsCall = comicApiService.getComicsByCharacterId(characterId)
         val comicsResponse = comicsCall.execute()
         return comicsResponse.body()!!

@@ -17,10 +17,6 @@ class RoomComicDatasource @Inject constructor(val comicsDao: ComicsDao,
             imagesDao.insert(second)}
     }
 
-    override fun getComics(): List<ComicEntity> {
-        return comicsDao.loadAllComics()
-    }
-
     override fun loadComicById(comicId: Int): Pair<ComicEntity, List<ImageEntity>> {
         val comic = comicsDao.loadComicById(comicId!!)
         return Pair(comic, getImagesByComic(comic))

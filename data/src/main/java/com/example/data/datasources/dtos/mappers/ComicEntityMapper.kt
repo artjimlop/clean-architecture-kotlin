@@ -15,12 +15,8 @@ class ComicEntityMapper @Inject constructor() {
                 bo.thumbnailUrl)
     }
 
-    fun toDto(bos: Collection<Comic>): List<ComicEntity> {
-        return bos.map { bo -> toDto(bo) }
-    }
-
     fun toBusinessObject(entity: ComicEntity, images: List<ImageEntity>): Comic {
-        val urls = images.map { image -> image.url }
+        val urls = images.map { (url) -> url }
         return Comic(entity.id,
                 entity.title,
                 entity.description,

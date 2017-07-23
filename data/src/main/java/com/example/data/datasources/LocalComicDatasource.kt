@@ -5,7 +5,6 @@ import com.example.data.datasources.dtos.entities.ImageEntity
 
 interface LocalComicDatasource {
     fun loadComicById(comicId: Int): Pair<ComicEntity, List<ImageEntity>>
-    fun getComics(): List<ComicEntity>
     fun saveComics(comicPairs: List<Pair<ComicEntity, List<ImageEntity>>>)
     fun loadImagesByComic(comicId: Int): List<ImageEntity>
 }
